@@ -48,9 +48,9 @@ void bench_cmd(Position& current, istringstream& is)
 	vector<std::string> fens;
 
 	// hashはデフォルト1024にしておかないと置換表あふれるな。
-//	std::string ttSize = "1024", threads  ="1", limit ="17" , fenFile ="default", limitType = "depth";
+	std::string ttSize = "256", threads  ="1", limit ="15" , fenFile ="default", limitType = "depth";
 	// →　固定depthにすると探索部の改良に左右されすぎる。固定timeの方がいいと思う。1局面15秒設定。
-	std::string ttSize = "1024", threads  ="1", limit ="15" , fenFile ="default", limitType = "time";
+//	std::string ttSize = "1024", threads  ="1", limit ="15" , fenFile ="default", limitType = "time";
 
 	string* positional_args[] = { &ttSize, &threads, &limit, &fenFile, &limitType };
 
@@ -81,11 +81,11 @@ void bench_cmd(Position& current, istringstream& is)
 	if (ttSize == "d")
 	{
 		// デバッグ用の設定(毎回入力するのが面倒なので)
-		ttSize = "1024";
+		ttSize = "256";
 		threads = "1";
 		fenFile = "default";
 		limitType = "depth";
-		limit = "6";
+		limit = "15";
 	}
 
 	// "Threads"があるとは仮定できない
